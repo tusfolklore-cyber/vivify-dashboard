@@ -31,7 +31,6 @@
             position: relative;
         }
 
-        /* Animated background gradient */
         body::before {
             content: "";
             position: fixed;
@@ -48,7 +47,6 @@
             100% { opacity: 1; transform: scale(1.05); }
         }
 
-        /* Grid overlay */
         body::after {
             content: "";
             position: fixed;
@@ -61,7 +59,6 @@
             pointer-events: none;
         }
 
-        /* ---------- NAVIGATION ---------- */
         nav {
             position: fixed;
             top: 0;
@@ -130,16 +127,14 @@
             width: 100%;
         }
 
-        /* ---------- MAIN CONTENT ---------- */
         main {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 120px 0 60px; /* offset for fixed nav */
+            padding: 120px 0 60px;
         }
 
-        /* Dashboard card */
         .dashboard {
             width: 90%;
             max-width: 800px;
@@ -154,7 +149,6 @@
                         inset 0 1px 1px rgba(255, 255, 255, 0.05);
             text-align: center;
             animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-            margin-bottom: 40px; /* added spacing between dashboard cards */
         }
 
         @keyframes fadeInUp {
@@ -166,7 +160,7 @@
             font-size: 3rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            margin-bottom: 40px;
+            margin-bottom: 0.3rem;
             background: linear-gradient(135deg, #ff3b3b 0%, #ffffff 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -178,6 +172,15 @@
         @keyframes titleGlow {
             0% { filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.4)); }
             100% { filter: drop-shadow(0 0 28px rgba(255, 0, 0, 0.8)); }
+        }
+
+        .subheading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .links {
@@ -239,15 +242,27 @@
             z-index: 1;
         }
 
-        .card-content svg {
+        .card-content svg.icon {
             width: 28px;
             height: 28px;
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
             transition: filter 0.3s;
         }
 
-        .link-card:hover .card-content svg {
+        .link-card:hover .card-content svg.icon {
             filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.6));
+        }
+
+        .status-circle {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 6px;
+        }
+
+        .status-circle svg {
+            width: 12px;
+            height: 12px;
+            filter: drop-shadow(0 0 4px currentColor);
         }
 
         .url {
@@ -274,18 +289,10 @@
             color: #ff4d4d;
         }
 
-        /* ---------- STATUS INDICATOR (new) ---------- */
-        .status-circle {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
-
-        /* ---------- FAQ SECTION ---------- */
         .faq-section {
             width: 90%;
             max-width: 800px;
-            margin-top: 20px; /* adjusted since there's now a second dashboard card */
+            margin-top: 60px;
             padding: 45px;
             border-radius: 28px;
             background: rgba(18, 18, 18, 0.65);
@@ -345,13 +352,13 @@
             line-height: 1.6;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .dashboard, .faq-section {
                 padding: 35px 25px;
                 border-radius: 20px;
             }
-            h1 { font-size: 2.2rem; margin-bottom: 30px; }
+            h1 { font-size: 2.2rem; }
+            .subheading { font-size: 1rem; }
             .link-card {
                 flex-direction: column;
                 align-items: flex-start;
@@ -364,7 +371,6 @@
     </style>
 </head>
 <body>
-    <!-- Fixed navigation bar -->
     <nav>
         <div class="nav-inner">
             <a href="#" class="nav-brand">VIVIFY</a>
@@ -376,15 +382,19 @@
     </nav>
 
     <main>
-        <!-- Dashboard -->
         <div class="dashboard">
-            <h1>VIVIFY</h1>
+            <h1>1# Beaming Dashboard</h1>
+            <p class="subheading">Best Sites</p>
 
             <div class="links">
                 <a class="link-card" href="https://vivify.lol" target="_blank">
                     <div class="card-content">
-                        <!-- Rocket SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="status-circle" id="status-0">
+                            <svg viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="7" fill="#fbbf24"/>
+                            </svg>
+                        </span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
                             <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
                             <path d="M9 12H4l.5-2.5L9 9"/>
@@ -400,12 +410,16 @@
 
                 <a class="link-card" href="https://app.beamse.pro/gen/beamingx" target="_blank">
                     <div class="card-content">
-                        <!-- Lightning SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="status-circle" id="status-1">
+                            <svg viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="7" fill="#fbbf24"/>
+                            </svg>
+                        </span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                         </svg>
                         <div>
-                        Main Generator
+                            Main Generator
                             <div class="url">https://app.beamse.pro/gen/beamingx</div>
                         </div>
                     </div>
@@ -414,13 +428,17 @@
 
                 <a class="link-card" href="https://app.injuries.to/auth/fallback" target="_blank">
                     <div class="card-content">
-                        <!-- Shield SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <span class="status-circle" id="status-2">
+                            <svg viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="7" fill="#fbbf24"/>
+                            </svg>
+                        </span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
                         <div>
-                        BACKUP SITE
-                            <div class="url">logged.tg/auth/fallback</div>
+                            BACKUP SITE
+                            <div class="url">https://app.injuries.to/auth/fallback</div>
                         </div>
                     </div>
                     <span class="card-arrow">→</span>
@@ -428,15 +446,6 @@
             </div>
         </div>
 
-        <!-- 1# Dashboard add: Best Beaming Sites with live status indicators -->
-        <div class="dashboard" id="beaming-dashboard">
-            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 25px; background: linear-gradient(135deg, #ff3b3b, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 8px rgba(255,0,0,0.3));">Best Beaming Sites</h2>
-            <div class="links" id="beaming-links">
-                <!-- Entries generated by JavaScript for live status -->
-            </div>
-        </div>
-
-        <!-- FAQ Section -->
         <div class="faq-section" id="faq">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
@@ -461,78 +470,41 @@
     </main>
 
     <script>
-        // Intersection Observer to reveal FAQ section when it scrolls into view
         const faqSection = document.getElementById('faq');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    faqSection.classList.add('visible');
-                }
+                if (entry.isIntersecting) faqSection.classList.add('visible');
             });
         }, { threshold: 0.2 });
         observer.observe(faqSection);
 
-        // ---------- Best Beaming Sites with live status ----------
-        const beamingSites = [
-            { name: 'BeamingX Pro', url: 'https://beamingx.com' },
-            { name: 'UltraBeam', url: 'https://ultrabeam.io' },
-            { name: 'BeamHub', url: 'https://beamhub.net' },
-            { name: 'InstaBeam', url: 'https://instabeam.app' }
+        const sites = [
+            { url: 'https://vivify.lol', statusId: 'status-0' },
+            { url: 'https://app.beamse.pro/gen/beamingx', statusId: 'status-1' },
+            { url: 'https://app.injuries.to/auth/fallback', statusId: 'status-2' }
         ];
 
-        const beamingContainer = document.getElementById('beaming-links');
-
-        // Create link cards for each beaming site with an inline status SVG
-        beamingSites.forEach((site, index) => {
-            const card = document.createElement('a');
-            card.className = 'link-card';
-            card.href = site.url;
-            card.target = '_blank';
-            card.innerHTML = `
-                <div class="card-content">
-                    <svg class="status-circle" width="20" height="20" viewBox="0 0 20 20">
-                        <circle cx="10" cy="10" r="7" fill="#4ade80" id="status-${index}"/>
-                    </svg>
-                    <div>
-                        ${site.name}
-                        <div class="url">${site.url}</div>
-                    </div>
-                </div>
-                <span class="card-arrow">→</span>
-            `;
-            beamingContainer.appendChild(card);
-        });
-
-        // Function to check if a URL is reachable
-        async function checkSiteStatus(url, statusElementId) {
-            const statusCircle = document.getElementById(statusElementId);
-            if (!statusCircle) return;
-            // Set to orange (checking) while pending
-            statusCircle.setAttribute('fill', '#fbbf24');
+        async function checkSite(url, statusElementId) {
+            const circle = document.querySelector(`#${statusElementId} circle`);
+            if (!circle) return;
+            circle.setAttribute('fill', '#fbbf24');
             try {
-                // Use no-cors to avoid CORS errors; a successful network response (any status) means reachable
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 5000);
                 await fetch(url, { mode: 'no-cors', signal: controller.signal });
                 clearTimeout(timeoutId);
-                // If the fetch didn't throw, the server is reachable (even if it returns an error status, no-cors resolves)
-                statusCircle.setAttribute('fill', '#4ade80'); // green
+                circle.setAttribute('fill', '#4ade80');
             } catch (err) {
-                // Network error or timeout → site is down
-                statusCircle.setAttribute('fill', '#ef4444'); // red
+                circle.setAttribute('fill', '#ef4444');
             }
         }
 
-        // Initial status check for all beaming sites
-        function checkAllBeamingSites() {
-            beamingSites.forEach((site, index) => {
-                checkSiteStatus(site.url, `status-${index}`);
-            });
+        function checkAllSites() {
+            sites.forEach(site => checkSite(site.url, site.statusId));
         }
 
-        // Run on load and then every 45 seconds
-        checkAllBeamingSites();
-        setInterval(checkAllBeamingSites, 45000);
+        checkAllSites();
+        setInterval(checkAllSites, 45000);
     </script>
 </body>
 </html>
